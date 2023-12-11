@@ -22,28 +22,28 @@ now = datetime.datetime.utcnow()
 icon = PhotoImage(file='./img/icon.png')
 root.iconphoto(False, icon)
 
-#mydb = mysql.connector.connect(
-   # user='root',
-   # password='epesu6unmo',
-   # host='localhost',
-   # database='itu_database',
-   # )
+mydb = mysql.connector.connect(
+    user='root',
+    password='epesu6unmo',
+    host='localhost',
+    database='itu_database',
+    )
 
-#mycursor = mydb.cursor(buffered=True)
-#mycursor1 = mydb.cursor(buffered=True)
-#mycursor1.execute("DROP TABLE Objednavka")
-#mycursor1.execute("DROP TABLE Rezervacia")
-#mycursor.execute("CREATE TABLE IF NOT EXISTS Objednavka (datum VARCHAR(30), obsah VARCHAR(20), stol int UNSIGNED, mnozstvo VARCHAR(20), druh VARCHAR(20),orderID int PRIMARY KEY AUTO_INCREMENT)")
-#mycursor1.execute("CREATE TABLE IF NOT EXISTS Rezervacia (datum VARCHAR(30), obsah VARCHAR(20), cas VARCHAR(20) , stol VARCHAR(30), druh VARCHAR(20),reservationID int PRIMARY KEY AUTO_INCREMENT)")
-#mycursor1.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "svijany", "8", "2", "syrova"  ))
-#mydb.commit()
-#mycursor.execute("SELECT * FROM Objednavka")
-#mycursor1.execute("SELECT * FROM Rezervacia")
+mycursor = mydb.cursor(buffered=True)
+mycursor1 = mydb.cursor(buffered=True)
+mycursor1.execute("DROP TABLE Objednavka")
+mycursor1.execute("DROP TABLE Rezervacia")
+mycursor.execute("CREATE TABLE IF NOT EXISTS Objednavka (datum VARCHAR(30), obsah VARCHAR(20), stol int UNSIGNED, mnozstvo VARCHAR(20), druh VARCHAR(20),orderID int PRIMARY KEY AUTO_INCREMENT)")
+mycursor1.execute("CREATE TABLE IF NOT EXISTS Rezervacia (datum VARCHAR(30), obsah VARCHAR(20), cas VARCHAR(20) , stol VARCHAR(30), druh VARCHAR(20),reservationID int PRIMARY KEY AUTO_INCREMENT)")
+mycursor1.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "svijany", "8", "2", "syrova"  ))
+mydb.commit()
+mycursor.execute("SELECT * FROM Objednavka")
+mycursor1.execute("SELECT * FROM Rezervacia")
 
-#mycursor.execute("DESCRIBE Objednavka")
+mycursor.execute("DESCRIBE Objednavka")
 
-#for x in mycursor:
-   # print(x)
+for x in mycursor:
+    print(x)
 
 #pozadie
 root.title('Kachnicka')
@@ -104,24 +104,24 @@ def open_home():
 
 def remove_actual_order():
     x = 0
-    #z = tree.selection()[0]
-    #tree.delete(z)
+    z = tree.selection()[0]
+    tree.delete(z)
 
 def remove_actual_order1():
     x = 0
-   # z = tree3.selection()[0]
-   # tree3.delete(z)
+    z = tree3.selection()[0]
+    tree3.delete(z)
 
 
 def remove_actual_reservation():
     x = 0
-   # a = tree1.selection()[0]
-   # tree1.delete(a)
+    a = tree1.selection()[0]
+    tree1.delete(a)
 
 def remove_actual_reservation1():
     x = 0
-   # a = tree2.selection()[0]
-    #tree2.delete(a)
+    a = tree2.selection()[0]
+    tree2.delete(a)
 
 
 def open_games():
@@ -347,20 +347,20 @@ pointer_label.place(x=570, y=110)
 def objednane_toasty(): 
     stol = variable1.get()
     pocet_toastov = variable55.get()
-    #mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "toastiky", stol, pocet_toastov, ""  ))
-    #mydb.commit()
+    mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "toastiky", stol, pocet_toastov, ""  ))
+    mydb.commit()
 
 def objednane_hotdogy():
     stol = variable_hotdog.get()
     pocet = variable20.get()
-   # mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Hot-dog", stol, pocet, ""  ))
-    #mydb.commit()
+    mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Hot-dog", stol, pocet, ""  ))
+    mydb.commit()
 
 def objednane_pizza():
     stol = variable25.get()
     druh = variable2.get()
-   # mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Pizza", stol, "1", druh  ))
-   # mydb.commit()
+    mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Pizza", stol, "1", druh  ))
+    mydb.commit()
 
 obrazocek = ImageTk.PhotoImage(Image.open('./img/toast.png').resize((1,1), ))
 toasty_image = ImageTk.PhotoImage(Image.open('./img/toast.png').resize((70,70), ))
@@ -450,8 +450,8 @@ dropdown2.place(x= 330, y= 511)
 
 
 #kontaktna stranka
-#newWindow.title('Kontakt')
-#newWindow.geometry("657x777")
+newWindow.title('Kontakt')
+newWindow.geometry("657x777")
 my_label = Label(newWindow, image=bg)
 my_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -495,23 +495,23 @@ adress_label = Label(newWindow, text="Božetěchova 1/2, 612 00 Brno-Královo Po
 adress_label.place(x= 120, y = 520)
 
 # stranka drinkov
-#drinksWindow.title('Kontakt')
-#drinksWindow.geometry("657x777")
+drinksWindow.title('Kontakt')
+drinksWindow.geometry("657x777")
 def objednane_pivko(): 
     stol = variable17.get()
     druh = variable3.get()
-   # mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "pivečko", stol, "1", druh  ))
-   # mydb.commit()
+    mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "pivečko", stol, "1", druh  ))
+    mydb.commit()
 def objednane_vinko(): 
     stol = variable6.get()
     druh = variable4.get()
-    #mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Vinko", stol, "1", druh  ))
-   # mydb.commit()
+    mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Vinko", stol, "1", druh  ))
+    mydb.commit()
 def objednane_kofola(): 
     stol = variable8.get()
     mnozstvo = variable7.get()
-   # mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Kofola", stol, mnozstvo, "" ))
-   # mydb.commit()
+    mycursor.execute("INSERT INTO Objednavka (datum, obsah, stol, mnozstvo, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "Kofola", stol, mnozstvo, "" ))
+    mydb.commit()
 my_label2 = Label(drinksWindow, image=bg)
 my_label2.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -629,8 +629,8 @@ def reservation_table():
     stol2 = chairs.get()
     cas =time.get()
     meno = name_for_reservation.get()
-    #mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), meno, cas, stol2, "rezervacia stola"))
-    #mydb.commit()
+    mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), meno, cas, stol2, "rezervacia stola"))
+    mydb.commit()
 
 my_label3 = Label(reservationWindow, image=bg)
 my_label3.place(x=0, y=0, relwidth=1, relheight=1)
@@ -703,10 +703,10 @@ enter.place(x=540, y=250, anchor='e')
 def rezervacia_deskovky(): 
     druh = variable_deskovky.get()
     cas = variable10.get()
-   # mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "deskovky", cas, "", druh  ))
-    #mydb.commit()
-#gamesWindow.title('Kontakt')
-#gamesWindow.geometry("657x777")
+    mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "deskovky", cas, "", druh  ))
+    mydb.commit()
+gamesWindow.title('Kontakt')
+gamesWindow.geometry("657x777")
 my_label3 = Label(gamesWindow, image=bg)
 my_label3.place(x=0, y=0, relwidth=1, relheight=1)
 #tlacidlo rezervacie
@@ -769,8 +769,8 @@ dropdown10.place(x= 290, y= 271)
 def rezervacia_billiard(): 
     druh = variable11.get()
     cas = variable12.get()
-    #mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "billiard", cas, "", druh  ))
-   # mydb.commit()
+    mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "billiard", cas, "", druh  ))
+    mydb.commit()
     
 billiard_image = ImageTk.PhotoImage(Image.open('./img/billiard.png').resize((70,70), ))
 billiard_container = Label(gamesWindow, image=pivko, width=600, height=100, bg='#FFCCCC', compound='left')
@@ -804,8 +804,8 @@ def rezervacia_futbalek():
     druhh = variable14.get()
     casik = variable15.get()
     stolik = variable13.get()
-   # mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "billiard", casik, stolik, druhh  ))
-   # mydb.commit()
+    mycursor.execute("INSERT INTO Rezervacia (datum, obsah, cas, stol, druh ) VALUES (%s,%s,%s,%s,%s)", ( now.strftime('%Y-%m-%d %H:%M:%S'), "billiard", casik, stolik, druhh  ))
+    mydb.commit()
 
 football_image = ImageTk.PhotoImage(Image.open('./img/football.png').resize((70,70),))
 football_container = Label(gamesWindow, image=obrazocek, width=600, height=100, bg='#FFCCCC', compound='left')
@@ -842,8 +842,8 @@ dropdown15.config(bg = '#FFCCCD', bd= 0, highlightthickness = 0,)
 dropdown15.place(x= 230, y= 511)
 
 #objednavky
-#ordersWindow.title('Kontakt')
-#ordersWindow.geometry("657x777")
+ordersWindow.title('Kontakt')
+ordersWindow.geometry("657x777")
 my_label = Label(ordersWindow, image=bg)
 my_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -862,51 +862,51 @@ menu_button.place(x=340, y=20)
 #pehlad rezervacii
 objednavky_button= Button(ordersWindow, text="Objednavky", font= helv36, bg='#abf1f4', highlightthickness = 0, bd = 0 , activebackground= '#9ad8db' ,  command=open_objednavky, justify = CENTER, )
 objednavky_button.place(x=470, y=20)
-#tree = ttk.Treeview(ordersWindow)
-#tree["show"] = 'headings'
-#tree["columns"] = ("datum","obsah","stol","mnozstvo","druh")
+tree = ttk.Treeview(ordersWindow)
+tree["show"] = 'headings'
+tree["columns"] = ("datum","obsah","stol","mnozstvo","druh")
 
-#tree.column("datum", width = 180,  anchor=CENTER)
-#tree.column("obsah", width = 100,  anchor=CENTER)
-#tree.column("stol", width = 60,  anchor=CENTER)
-#ree.column("mnozstvo", width = 100,  anchor=CENTER)
-#tree.column("druh", width = 140,  anchor=CENTER)
+tree.column("datum", width = 180,  anchor=CENTER)
+tree.column("obsah", width = 100,  anchor=CENTER)
+tree.column("stol", width = 60,  anchor=CENTER)
+ree.column("mnozstvo", width = 100,  anchor=CENTER)
+tree.column("druh", width = 140,  anchor=CENTER)
 
-#tree.heading("datum", text = "datum", anchor=CENTER)
-#tree.heading("obsah", text = "obsah", anchor=CENTER)
-#tree.heading("stol", text = "stol", anchor=CENTER)
-#tree.heading("mnozstvo", text = "mnozstvo", anchor=CENTER)
-#tree.heading("druh", text = "druh", anchor=CENTER)
+tree.heading("datum", text = "datum", anchor=CENTER)
+tree.heading("obsah", text = "obsah", anchor=CENTER)
+tree.heading("stol", text = "stol", anchor=CENTER)
+tree.heading("mnozstvo", text = "mnozstvo", anchor=CENTER)
+tree.heading("druh", text = "druh", anchor=CENTER)
 
-#i = 0
-#for ro in mycursor:
-#    tree.insert('', i, text="", values=(ro[0],ro[1],ro[2],ro[3],ro[4]))
-#    i = i +1
+i = 0
+for ro in mycursor:
+    tree.insert('', i, text="", values=(ro[0],ro[1],ro[2],ro[3],ro[4]))
+    i = i +1
 
-#tree.place(x=40, y=80)
+tree.place(x=40, y=80)
 
-#tree1 = ttk.Treeview(ordersWindow)
-#tree1["show"] = 'headings'
-#tree1["columns"] = ("datum","obsah","čas","stôl","druh")
+tree1 = ttk.Treeview(ordersWindow)
+tree1["show"] = 'headings'
+tree1["columns"] = ("datum","obsah","čas","stôl","druh")
 
-#tree1.column("datum", width = 180,  anchor=CENTER)
-#tree1.column("obsah", width = 100,  anchor=CENTER)
-#tree1.column("čas", width = 60,  anchor=CENTER)
-#tree1.column("stôl", width = 100,  anchor=CENTER)
-#tree1.column("druh", width = 140,  anchor=CENTER)
+tree1.column("datum", width = 180,  anchor=CENTER)
+tree1.column("obsah", width = 100,  anchor=CENTER)
+tree1.column("čas", width = 60,  anchor=CENTER)
+tree1.column("stôl", width = 100,  anchor=CENTER)
+tree1.column("druh", width = 140,  anchor=CENTER)
 
-#tree1.heading("datum", text = "datum", anchor=CENTER)
-#tree1.heading("obsah", text = "obsah", anchor=CENTER)
-#tree1.heading("čas", text = "čas", anchor=CENTER)
-#tree1.heading("stôl", text = "stôl", anchor=CENTER)
-#tree1.heading("druh", text = "druh/datum", anchor=CENTER)
+tree1.heading("datum", text = "datum", anchor=CENTER)
+tree1.heading("obsah", text = "obsah", anchor=CENTER)
+tree1.heading("čas", text = "čas", anchor=CENTER)
+tree1.heading("stôl", text = "stôl", anchor=CENTER)
+tree1.heading("druh", text = "druh/datum", anchor=CENTER)
 
-#j = 0
-#for rp in mycursor:
- #   tree.insert('', j, text="", values=(rp[0],rp[1],rp[2],rp[3],rp[4]))
- #   j = j +1
+j = 0
+for rp in mycursor:
+    tree.insert('', j, text="", values=(rp[0],rp[1],rp[2],rp[3],rp[4]))
+    j = j +1
 
-#tree1.place(x=40, y=320)
+tree1.place(x=40, y=320)
 
 delete_order = Button(ordersWindow, text ="zrušiť objednavku", command= remove_actual_order )
 delete_order.place(x = 40, y = 600)
@@ -925,28 +925,28 @@ rez_button5.place(x=30, y=20)
 #tlacidlo menu
 menu_button3= Button(ordersWindow1, text="Prehľad objednávok", font= helv36, bg='#abf1f4', highlightthickness = 0, bd = 0, activebackground= '#9ad8db' ,  command=open_admin_orders, justify = CENTER, )
 menu_button3.place(x=340, y=20)
-#tree2 = ttk.Treeview(ordersWindow1)
-#tree2["show"] = 'headings'
-#tree2["columns"] = ("datum","obsah","stol","mnozstvo","druh")
+tree2 = ttk.Treeview(ordersWindow1)
+tree2["show"] = 'headings'
+tree2["columns"] = ("datum","obsah","stol","mnozstvo","druh")
 
-#tree2.column("datum", width = 180,  anchor=CENTER)
-#tree2.column("obsah", width = 100,  anchor=CENTER)
-#tree2.column("stol", width = 60,  anchor=CENTER)
-#tree2.column("mnozstvo", width = 100,  anchor=CENTER)
-#tree2.column("druh", width = 140,  anchor=CENTER)
+tree2.column("datum", width = 180,  anchor=CENTER)
+tree2.column("obsah", width = 100,  anchor=CENTER)
+tree2.column("stol", width = 60,  anchor=CENTER)
+tree2.column("mnozstvo", width = 100,  anchor=CENTER)
+tree2.column("druh", width = 140,  anchor=CENTER)
 
-#tree2.heading("datum", text = "datum", anchor=CENTER)
-#tree2.heading("obsah", text = "obsah", anchor=CENTER)
-#tree2.heading("stol", text = "stol", anchor=CENTER)
-#tree2.heading("mnozstvo", text = "mnozstvo", anchor=CENTER)
-#tree2.heading("druh", text = "druh", anchor=CENTER)
+tree2.heading("datum", text = "datum", anchor=CENTER)
+tree2.heading("obsah", text = "obsah", anchor=CENTER)
+tree2.heading("stol", text = "stol", anchor=CENTER)
+tree2.heading("mnozstvo", text = "mnozstvo", anchor=CENTER)
+tree2.heading("druh", text = "druh", anchor=CENTER)
 
-#i = 0
-#for ro in mycursor:
-#    tree2.insert('', i, text="", values=(ro[0],ro[1],ro[2],ro[3],ro[4]))
-#    i = i +1
+i = 0
+for ro in mycursor:
+    tree2.insert('', i, text="", values=(ro[0],ro[1],ro[2],ro[3],ro[4]))
+    i = i +1
 
-#tree2.place(x=40, y=130)
+tree2.place(x=40, y=130)
 delete_reservation= Button(ordersWindow1, text="zrušiť rezerváciu", command = remove_actual_reservation1)
 delete_reservation.place(x = 300, y = 400)
 
@@ -961,28 +961,28 @@ rez_button6.place(x=30, y=20)
 #tlacidlo menu
 menu_button4= Button(ordersWindow2, text="Prehľad objednávok", font= helv36, bg='#abf1f4', highlightthickness = 0, bd = 0, activebackground= '#9ad8db' ,   justify = CENTER, )
 menu_button4.place(x=340, y=20)
-#tree3 = ttk.Treeview(ordersWindow2)
-#tree3["show"] = 'headings'
-#tree3["columns"] = ("datum","obsah","stol","mnozstvo","druh")
+tree3 = ttk.Treeview(ordersWindow2)
+tree3["show"] = 'headings'
+tree3["columns"] = ("datum","obsah","stol","mnozstvo","druh")
 
-#tree3.column("datum", width = 180,  anchor=CENTER)
-#tree3.column("obsah", width = 100,  anchor=CENTER)
-#tree3.column("stol", width = 60,  anchor=CENTER)
-#tree3.column("mnozstvo", width = 100,  anchor=CENTER)
-#tree3.column("druh", width = 140,  anchor=CENTER)
+tree3.column("datum", width = 180,  anchor=CENTER)
+tree3.column("obsah", width = 100,  anchor=CENTER)
+tree3.column("stol", width = 60,  anchor=CENTER)
+tree3.column("mnozstvo", width = 100,  anchor=CENTER)
+tree3.column("druh", width = 140,  anchor=CENTER)
 
-#tree3.heading("datum", text = "datum", anchor=CENTER)
-#tree3.heading("obsah", text = "obsah", anchor=CENTER)
-#tree3.heading("stol", text = "stol", anchor=CENTER)
-#tree3.heading("mnozstvo", text = "mnozstvo", anchor=CENTER)
-#tree3.heading("druh", text = "druh", anchor=CENTER)
+tree3.heading("datum", text = "datum", anchor=CENTER)
+tree3.heading("obsah", text = "obsah", anchor=CENTER)
+tree3.heading("stol", text = "stol", anchor=CENTER)
+tree3.heading("mnozstvo", text = "mnozstvo", anchor=CENTER)
+tree3.heading("druh", text = "druh", anchor=CENTER)
 
-#i = 0
-#for ro in mycursor:
- #   tree3.insert('', i, text="", values=(ro[0],ro[1],ro[2],ro[3],ro[4]))
-  #  i = i +1
+i = 0
+for ro in mycursor:
+    tree3.insert('', i, text="", values=(ro[0],ro[1],ro[2],ro[3],ro[4]))
+    i = i +1
 
-#tree3.place(x=40, y=130)
+tree3.place(x=40, y=130)
 delete_order = Button(ordersWindow2, text ="zrušiť objednavku", command= remove_actual_order1 )
 delete_order.place(x = 300, y = 400)
 
